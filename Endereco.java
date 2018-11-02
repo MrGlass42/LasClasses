@@ -1,5 +1,3 @@
-package Pacote;
-
 /**
  *
  * @author Mr.Glass...
