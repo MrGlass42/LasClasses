@@ -1,5 +1,3 @@
-package Pacote;
-
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -7,6 +5,9 @@ import javax.swing.JOptionPane;
  *
  * @author ANCAP...
  */
+// Classe Responsavel por fazer a consistencia de dados digitados...
+
+
 public class LaConsistencia 
 {
     private static final Scanner entrada = new Scanner(System.in);
@@ -19,17 +20,26 @@ public class LaConsistencia
      * Scanner
      * @return texto
      */
-    public static String consisteString(String cabecalho, boolean in) {
+    public static String consisteString(String cabecalho, boolean in) 
+    {
         String texto;
-
-        if (in) {
-            do {
-                texto = JOptionPane.showInputDialog(cabecalho + ": ");
+        
+        if (in) 
+        {
+            do 
+            {
+                texto = JOptionPane.showInputDialog(cabecalho);
             } while (texto.trim().isEmpty() || texto.matches("\\d+"));
-        } else {
-            do {
-                System.out.print("\n\n" + cabecalho + ": ");
-                texto = entrada.next();
+        } 
+        else 
+        {
+            do 
+            {
+                System.out.print("\n\n" + cabecalho);
+                texto = entrada.nextLine();
+                
+                System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                entrada.nextLine();
             } while (texto.trim().isEmpty() || texto.matches("\\d+"));
         }
 
@@ -44,17 +54,26 @@ public class LaConsistencia
      * Scanner
      * @return texto
      */
-    public static String consisteStringSpecial(String cabecalho, boolean in) {
+    public static String consisteStringSpecial(String cabecalho, boolean in) 
+    {
         String texto;
 
-        if (in) {
-            do {
-                texto = JOptionPane.showInputDialog(cabecalho + ": ");
+        if (in) 
+        {
+            do 
+            {
+                texto = JOptionPane.showInputDialog(cabecalho);
             } while (texto.trim().isEmpty());
-        } else {
-            do {
-                System.out.print("\n\n" + cabecalho + ": ");
+        } 
+        else 
+        {
+            do 
+            {
+                System.out.print("\n\n" + cabecalho);
                 texto = entrada.next();
+                
+                System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                entrada.nextLine();
             } while (texto.trim().isEmpty());
         }
         return texto;
@@ -72,27 +91,42 @@ public class LaConsistencia
      * @return valor
      */
 	 
-    public static int consisteNumero(String cabecalho, int valorMaximo, int valorMinimo, boolean in) {
+    public static int consisteNumero(String cabecalho, int valorMaximo, int valorMinimo, boolean in) 
+    {
         int valor = 0;
         boolean erro;
 
-        if (in) {
-            do {
+        if (in) 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    valor = Integer.valueOf(JOptionPane.showInputDialog(cabecalho + ": "));
-                } catch (NumberFormatException nfe) {
+                try 
+                {
+                    valor = Integer.valueOf(JOptionPane.showInputDialog(cabecalho));
+                } 
+                catch (NumberFormatException nfe) 
+                {
                     erro = true;
                 }
             } while (valor > valorMaximo || valor < valorMinimo || erro);
-        } else {
-            do {
+        }
+        else 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    System.out.println(cabecalho + ": ");
+                try 
+                {
+                    System.out.println(cabecalho);
                     valor = entrada.nextInt();
+                    
+                    System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                    entrada.nextLine();
 
-                } catch (Exception nfe) {
+                } 
+                catch (Exception nfe) 
+                {
                     erro = true;
                 }
             } while (valor > valorMaximo || valor < valorMinimo || erro);
@@ -109,26 +143,42 @@ public class LaConsistencia
      * @param valorMinimo - limite minimo do valor
      * @return valor
      */
-    public static double consisteNumero(String cabecalho, double valorMaximo, double valorMinimo, boolean in) {
+    public static double consisteNumero(String cabecalho, double valorMaximo, double valorMinimo, boolean in) 
+    {
         double valor = 0;
         boolean erro;
 
-        if (in) {
-            do {
+        if (in) 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    valor = Double.valueOf(JOptionPane.showInputDialog(cabecalho + ": "));
-                } catch (NumberFormatException nfe) {
+                try 
+                {
+                    valor = Double.valueOf(JOptionPane.showInputDialog(cabecalho));
+                } 
+                catch (NumberFormatException nfe) 
+                {
                     erro = true;
                 }
             } while (valor > valorMaximo || valor < valorMinimo || erro);
-        } else {
-            do {
+        } 
+        else 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    System.out.println(cabecalho + ": ");
+                
+                try 
+                {
+                    System.out.println(cabecalho);
                     valor = entrada.nextInt();
-                } catch (Exception nfe) {
+                    
+                    System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                    entrada.nextLine();
+                } 
+                catch (Exception nfe) 
+                {
                     erro = true;
                 }
             } while (valor > valorMaximo || valor < valorMinimo || erro);
@@ -144,24 +194,44 @@ public class LaConsistencia
      * @param valorMinimo - limite minimo do valor
      * @return valor
      */
-    public static int consisteNumero(int valorMinimo, boolean in) {
+    public static int consisteNumero(String cabecalho, int valorMinimo, boolean in) 
+    {
         int valor = 0;
         boolean erro;
-        if (in) {
-            do {
+        
+        if (in) 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    valor = Integer.valueOf(JOptionPane.showInputDialog(null));
-                } catch (NumberFormatException nfe) {
+                try 
+                {
+                    valor = Integer.valueOf(JOptionPane.showInputDialog(cabecalho));
+                } 
+                catch (NumberFormatException nfe) 
+                {
                     erro = true;
                 }
             } while (valor < valorMinimo || erro);
-        } else {
-            do {
+        } 
+        else 
+        {
+            do 
+            {
                 erro = false;
-                try {
+                try 
+                {
+                    
+                    System.out.print("\n\n" + cabecalho);
+                    
                     valor = entrada.nextInt();
-                } catch (NumberFormatException nfe) {
+
+                    System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                    entrada.nextLine();
+
+                } 
+                catch (Exception nfe) 
+                {
                     erro = true;
                 }
             } while (valor < valorMinimo || erro);
@@ -177,28 +247,42 @@ public class LaConsistencia
      * @param valorMinimo - limite minimo do valor
      * @return valor
      */
-    public static double consisteNumero(String cabecalho, double valorMinimo, boolean in) {
+    public static double consisteNumero(String cabecalho, double valorMinimo, boolean in) 
+    {
         double valor = 0;
         boolean erro;
 
-        if (in) {
-            do {
+        if (in) 
+        {
+            do 
+            {
                 erro = false;
-                try {
-                    valor = Double.valueOf(JOptionPane.showInputDialog(cabecalho + ": "));
-                } catch (NumberFormatException nfe) {
+                try 
+                {
+                    valor = Double.valueOf(JOptionPane.showInputDialog(cabecalho));
+                } 
+                catch (NumberFormatException nfe) 
+                {
                     erro = true;
                 }
             } while (valor < valorMinimo || erro);
-        } else {
-                do {
-                erro = false;
-                try {
-                    System.out.println(cabecalho + ": ");
-                    valor = entrada.nextInt();
-                } catch (NumberFormatException nfe) {
-                    erro = true;
-                }
+        } 
+        else 
+        {
+            do 
+            {
+            erro = false;
+            try 
+            {
+                System.out.println(cabecalho);
+                valor = entrada.nextInt();
+
+                System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                entrada.nextLine();
+            } catch (Exception nfe) 
+            {
+                erro = true;
+            }
             } while (valor < valorMinimo || erro);
         }
         return valor;
@@ -209,15 +293,29 @@ public class LaConsistencia
      * @param tamanho - tamanho limite da String
      * @return 
      */
-	public static String consisteDocumentacao (String cabecalho, int tamanho)
+	public static String consisteDocumentacao (String cabecalho, int tamanho, boolean $in)
 	{
         	String texto;
-        	do 
-		{
-            		texto = JOptionPane.showInputDialog(cabecalho + ": ");
-        	} while(texto.trim().isEmpty() || texto.matches("\\d+") || texto.length() > tamanho || texto.length() < tamanho);
-        
-        	return texto;
+                
+                if($in)
+                {
+                    do 
+                    {
+                            texto = JOptionPane.showInputDialog(cabecalho);
+                    } while(texto.trim().isEmpty() || texto.matches("\\d+") || texto.length() > tamanho || texto.length() < tamanho);
+                }
+                else
+                {
+                    do 
+                    {
+                        System.out.print("\n\n" + cabecalho);
+                        texto = entrada.next();
+                        
+                        System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                        entrada.nextLine();
+                    } while(texto.trim().isEmpty() || texto.matches("\\d+") || texto.length() > tamanho || texto.length() < tamanho);
+                }
+                return texto;
     	}
     
     /**
@@ -226,14 +324,28 @@ public class LaConsistencia
      * @param tamanho - tamanho limite da String
      * @return 
      */
-    public static String consisteDocumentacaoSpecial (String cabecalho, int tamanho) {
+    public static String consisteDocumentacaoSpecial (String cabecalho, int tamanho, boolean $in) 
+    {
         String texto;
-        do {
-            texto = JOptionPane.showInputDialog(cabecalho + ": ");
-        } while(texto.trim().isEmpty() || texto.length() < tamanho || texto.length() > tamanho);
         
+        if($in)
+        {
+            do 
+            {
+                texto = JOptionPane.showInputDialog(cabecalho);
+            } while(texto.trim().isEmpty() || texto.length() < tamanho || texto.length() > tamanho);
+        }
+        else
+        {
+            do 
+            {
+                System.out.print("\n\n" + cabecalho);
+                texto = entrada.next();
+                
+                System.out.print("\n\nInformação salva, aperte enter para continuar...");
+                entrada.nextLine();
+            } while(texto.trim().isEmpty() || texto.length() < tamanho || texto.length() > tamanho);
+        }
         return texto;
     }
-    
-    
 }
